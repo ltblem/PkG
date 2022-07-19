@@ -48,7 +48,7 @@ try:
 		os.system("rm -rf /home/jamsii/.cache && mkdir /home/jamsii/.cache && echo 'Success.'")
 
 	elif args[1] == "clearmemcache" or args[1] == "cm":
-		os.system("echo 3 >  /proc/sys/vm/drop_caches")
+		os.system("sudo sh -c 'echo 3 >  /proc/sys/vm/drop_caches'")
 
 	elif args[1] == "gitpull" or args[1] == "gp":
 		autopull.pull(autopull.getDirs())
