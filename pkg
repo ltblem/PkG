@@ -4,7 +4,7 @@
 # It's basically just a yay alias
 # Liscensed under DONT STEAL MY CODE YOU ASSHOLE (DSMCYA)
 
-import sys, os, autopull
+import sys, os, autopull, colours
 from sys import argv as args
 
 manpage = """PkG - LetThereBeLemons' Package Manager
@@ -20,6 +20,7 @@ Options:
 	cleardiskcache | cd: clears /home/jamsii/.cache
 	clearmemcache | cm: clears cahced memory
 	gitpull | gp: runs a git pull on all fiddly/ repositories
+	main | m: does a load of useful stuff (update, cleardiskcache, clearmemcache, gitpull)
 """
 
 
@@ -52,6 +53,22 @@ try:
 
 	elif args[1] == "gitpull" or args[1] == "gp":
 		autopull.pull(autopull.getDirs())
+
+	elif args[1] == "main" or args[1] == "m":
+		# Update packages
+		print(colours.get_fg("blue") + colours.get_style("bold") + colours.get_style("underline") + "Updating packages... (1/4)" + colours.get_style("reset"))
+		os.system("yay -Syyu --noconfirm")
+		# Clear disk cache
+		print(colours.get_fg("blue") + colours.get_style("bold") + colours.get_style("underline") + "Clearing disk cache... (2/4)" + colours.get_style("reset"))
+		os.system("rm -rf /home/jamsii/.cache && mkdir /home/jamsii/.cache && echo 'Success.'")
+		# Clear memory cache
+		print(colours.get_fg("blue") + colours.get_style("bold") + colours.get_style("underline") + "Clearing memory cache... (3/4)" + colours.get_style("reset"))
+		os.system("sudo sh -c 'echo 3 >  /proc/sys/vm/drop_caches'")
+		# Pull all fiddly repositories
+		print(colours.get_fg("blue") + colours.get_style("bold") + colours.get_style("underline") + "Pulling all fiddly repositories... (4/4)" + colours.get_style("reset"))
+		autopull.pull(autopull.getDirs())
+		# Print success message
+		print(colours.get_fg("blue") + colours.get_style("bold") + colours.get_style("underline") + "Finished." + colours.get_style("reset"))
 
 	else:
 		print("Invalid arguments given.\nUse `pkg help` for help.")
