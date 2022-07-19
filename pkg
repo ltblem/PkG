@@ -33,7 +33,7 @@ try:
 		os.system("yay -S " + args[2])
 
 	elif args[1] == "update" or args[1] == "u":
-		os.system("yay -Syyu")
+		os.system("yay -Syyu --noconfirm")
 
 	elif args[1] == "remove" or args[1] == "r":
 		os.system("yay -R " + args[2])
@@ -48,7 +48,7 @@ try:
 		os.system("rm -rf /home/jamsii/.cache && mkdir /home/jamsii/.cache && echo 'Success.'")
 
 	elif args[1] == "clearmemcache" or args[1] == "cm":
-		os.system("sudo sh -c 'echo 3 >  /proc/sys/vm/drop_caches'")
+		os.system("echo 3 >  /proc/sys/vm/drop_caches")
 
 	elif args[1] == "gitpull" or args[1] == "gp":
 		autopull.pull(autopull.getDirs())
