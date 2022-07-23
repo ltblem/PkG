@@ -4,7 +4,7 @@
 # It's basically just a yay alias
 # Liscensed under DONT STEAL MY CODE YOU ASSHOLE (DSMCYA)
 
-import sys, os, autopull, colours
+import sys, os, autopull, colours, killer
 from sys import argv as args
 
 manpage = """PkG - LetThereBeLemons' Package Manager
@@ -21,6 +21,7 @@ Options:
 	clearmemcache | cm: clears cahced memory
 	gitpull | gp: runs a git pull on all fiddly/ repositories
 	main | m: does a load of useful stuff (update, cleardiskcache, clearmemcache, gitpull)
+	kill | k: kills a process
 """
 
 
@@ -69,6 +70,10 @@ try:
 		autopull.pull(autopull.getDirs())
 		# Print success message
 		print(colours.get_fg("blue") + colours.get_style("bold") + colours.get_style("underline") + "Finished." + colours.get_style("reset"))
+  
+	elif args[1] == "kill" or args[1] == "k":
+		killer.kill(args[2])
+		print("Killed " + args[2])
 
 	else:
 		print("Invalid arguments given.\nUse `pkg help` for help.")
