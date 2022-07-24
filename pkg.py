@@ -73,7 +73,6 @@ try:
   
 	elif args[1] == "kill" or args[1] == "k":
 		killer.kill(args[2])
-		print("Killed " + args[2])
 
 	else:
 		print("Invalid arguments given.\nUse `pkg help` for help.")
@@ -82,4 +81,4 @@ try:
 
 except IndexError:
 	print("Invalid arguments given.\nUse `pkg help` for help.")
-	sys.exit(0)
+	sys.exit(1)
