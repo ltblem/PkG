@@ -1,7 +1,6 @@
 #!/bin/python3
 
 # PkG - A LetThereBeLemons creation
-# It's basically just a yay alias
 # Liscensed under DONT STEAL MY CODE YOU ASSHOLE (DSMCYA)
 
 import sys, os, autopull, colours, killer
@@ -13,9 +12,6 @@ Usage:
 Options:
 	help | h : print this help page
 	update | u : update package lists and upgrade packages
-	install | i : install a package
-	remove | r : remove a package
-	query | q: list all packages on the system
 	diskusage | du: unmount the external drive, open ncdu, then remount it
 	cleardiskcache | cd: clears /home/jamsii/.cache
 	clearmemcache | cm: clears cahced memory
@@ -31,17 +27,8 @@ try:
 	if args[1] == "help" or args[1] == "h":
 		print(manpage)
 
-	elif args[1] == "install" or args[1] == "i":
-		os.system("yay -S " + args[2])
-
 	elif args[1] == "update" or args[1] == "u":
 		os.system("yay -Syyu --noconfirm")
-
-	elif args[1] == "remove" or args[1] == "r":
-		os.system("yay -R " + args[2])
-
-	elif args[1] == "query" or args[1] == "q":
-		os.system("yay -Q")
 
 	elif args[1] == "diskusage" or args[1] == "du":
 		os.system("sudo umount /dev/sdb1 && sudo ncdu / ; sudo mount /dev/sdb1 /home/jamsii/data")

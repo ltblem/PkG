@@ -3,6 +3,7 @@ import os, colours
 green = colours.get_fg("green")
 greenbold = colours.get_fg("green") + colours.get_style("bold")
 creset = colours.get_style("reset")
+red = colours.get_fg("red")
 
 def getDirs():
 
@@ -31,4 +32,4 @@ def pull(dirs):
 			os.system("cd /home/jamsii/fiddly/" + proj + " && git pull")
 			print(green + proj, "updated, moving on" + creset)
 		else:
-			print(green + proj, "is not a repo, skipping" + creset)
+			print(red + proj, "is not a repo, skipping" + creset)
